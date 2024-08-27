@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óptica</title>
+    <link rel="stylesheet" href="styles.css">
+<!--;;;;;;;;;;;;;;;;;;;;;;;;;,;,;,;,;,;,;,;,;,;,;,;,p;,;,-->
+<style>
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    width: 94%;
+    top: 0;
+    z-index: 1000;
+}
+/*----------------------------------*/
+
+/*-----------------------------------*/
+header .logo {
+    color:  #e6ca15;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+/* el espacio que hay entre aca letra, es como un espacio entre cada letra por medio */
+header nav ul li {
+    margin-left: 20px;
+}
+/*color y diseno del , inicio,about we,portafolio,contacto*/
+header nav ul li a {
+    text-decoration: none;
+    color: #e6ca15;
+    font-weight: bold;
+}
+
+.hero {
+
+    height: 100vh;
+    background-image: linear-gradient(100deg, #000000, #00000020), url('computa.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    color: #fff;
+    padding-top: 100px; /* To offset the fixed header */
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    content: "";
+    position: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.hero h1 span {
+    color:  #e6ca15;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.hero .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color:  #e6ca15;
+    background-color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+main {
+    padding: 20px;
+    margin-top: -100px; /* To offset the fixed header */
+    padding-top: 70px;  /* para que no tope con el contenido de arriba */
+}
+/*----------------------------------------------------------------------------------------*/
+@media (max-width: 768px) {
+            header {
+                padding: 10px;
+            }
+
+            header .logo {
+                font-size: 1.2em;
+            }
+
+            header nav ul li {
+                margin-left: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+        }
+/*------------------------el diseno del paddi de los portafolio----------------------------------------------------------------*/
+/*aca esta el relleno de atras de todas las fotos que se vizualizaran*/
+#portafolio {
+
+    border-top: 1px solid  #0a0808;
+    /* esto es el diseno de los borde*/
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px; /*controla la curvatura del borde solo de 8*/
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px; /*esto es para que se despege el paddi del cotenido de arriba*/
+}
+
+#portafolio h2 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+/*-----------------------------------------*/
+.filtros ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+}
+
+.filtros ul li {
+    margin: 0 15px;
+}
+
+.filtros ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    position: relative;
+}
+
+/* diseno del doton de, donde dice todo*/
+.filtros ul li a.activo {
+    color: #e6ca15;
+}
+
+.filtros ul li a.activo::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color:#e6ca15;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.galeria .item {
+    width: calc(25% - 10px);
+    margin-bottom: 20px; /*diseno de el marge del boton que alla separacion arriba e abajo*/
+}
+
+.galeria .item img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+    /*diseno de la trancision de java*/
+    opacity: 5; /* Comienza con opacidad 0 */
+    transition: opacity 0.6s ease-in-out; /* Transición de opacidad */
+    
+}
+
+/* diseno de java */
+.section.active .galeria .item img {
+       opacity: 1;
+    transform: scale(1.00); /* Zoom leve al estar activo */
+}
+
+.galeria .item img:hover {
+    transform: scale(1.1); /* Aumenta el tamaño ligeramente al pasar el mouse */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada en hover */
+}
+/*------------*/
+#sobre-nosotros {
+    padding: 80px 0;
+    text-align: center;
+}
+
+#sobre-nosotros h2 {
+    font-size: 40px;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.contenido {
+    display: flex;
+    justify-content: center;
+}
+
+.columna {
+    flex-basis: 33.33%;
+    padding: 0 20px;
+}
+
+.columna h3 {
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.columna p {
+    font-size: 16px;
+    color: #7b7b7b;
+    line-height: 1.5;
+}
+/*  -------------------------------------------------------------------------------------------*/
+/*para el funcionamiento de los diferentes click*/
+.section {
+    display: none; /*section estarán ocultas para el clck (display: none)*/
+    padding: 2rem; /*establece un espacio de relleno*/
+    border: 1px solid #fdf6f6; /*bordes*/
+    opacity: 0;
+
+}
+
+    .section.active {
+    display: block; /*selecciona las secciones que tienen tanto la clase .section como la clase .active.*/
+    opacity: 1;
+   
+       }
+
+    .section {
+    padding: 2px 4; /*es el espacio que me hace, para los texto que estan centralizadp haiga separacion con el menu*/
+    text-align: center; /*centra horizontalmente el texto dentro de la sección, select */
+	margin-bottom: 40px; /*lo que separa la divicion del diseno principal con el de abajo. no pase de la linea*/
+      }
+/*===================================================================================================*/
+        #servicios {
+            padding: 50px 0;
+        }
+
+        #servicios h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+/* dominio de si estara en el centro, o en end, o stard, izquierda, derecha ect */
+        .servicios {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+/* */
+        .servicio {
+            width: 250px;
+            margin: 4px; /*espacio que hay entre los elementos */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+/* disneo de los iconos */
+        .icono {
+            font-size: 48px;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        .servicio h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .servicio p {
+            line-height: 1.5;
+            color: #666;
+        }
+/*--------------------------------------diseno del contacto---------------------------------------------------------*/
+#contacto {
+  background-color: #1e1c1c;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.contacto {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.info {
+  width: 300px;
+}
+
+.formulario {
+  width: 300px;
+}
+
+h3 {
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .contacto {
+    flex-direction: column;
+  }
+
+  .info,
+  .formulario {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+/* Media Queries for Responsiveness */
+
+@media (max-width: 1024px) {
+    .galeria .item {
+        width: calc(33.33% - 10px);
+    }
+
+    .columna {
+        flex-basis: 50%;
+        margin-bottom: 30px;
+    }
+
+    header {
+        padding: 20px 30px;
+    }
+
+    header nav ul li {
+        margin-left: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px;
+    }
+
+    header .logo {
+        font-size: 1.2em;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .galeria .item {
+        width: calc(50% - 10px);
+    }
+
+    .contenido {
+        flex-direction: column;
+    }
+
+    .columna {
+        flex-basis: 100%;
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+
+    .servicio {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .contacto {
+        flex-direction: column;
+    }
+
+    .info,
+    .formulario {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+/* */
+@media (max-width: 480px) {
+    header {
+        padding: 12px;
+    }
+/* tamano de el encabezado de opciones */
+
+    header .logo {
+        font-size: 1em;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 0.9em;
+    }
+
+    .hero .btn {
+        padding: 8px 15px;
+    }
+
+    .galeria .item {
+        width: 100%;
+    }
+
+    .servicio {
+        padding: 15px;
+    }
+
+    .icono {
+        font-size: 36px;
+    }
+
+    .servicio h3 {
+        font-size: 1.2em;
+    }
+
+    .servicio p {
+        font-size: 0.9em;
+    }
+}
+/*----------------------------------fronter-------------------------------------------*/
+/* General Styles */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer {
+    background-color: #211f1f;
+    padding: 40px 0;
+}
+
+/* diseno de la informacion de contacto */
+.menu-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #ffffff;
+    /*su color blanco*/
+}
+
+.menu-footer > div {
+    width: calc(25% - 20px);
+    margin-bottom: 30px;
+}
+
+.title-footer {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.menu-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-footer li {
+    margin-bottom: 10px;
+}
+
+.menu-footer a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* diseno cuando pasas el maus se pondra en azul */
+.menu-footer a:hover {
+    color: #007bff;
+}
+
+/* Newsletter Styles */
+/* .newsletter .content {
+    display: flex;
+    align-items: center;
+} */
+
+.newsletter input {
+    width: calc(100% - 120px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Copyright estilos */
+.copyright {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* diseno de copia right su color y demas el nombre de derecto de autor */
+.copyright p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+/* .copyright img {
+    height: 30px;
+} */
+
+/* Responsive Styles sobre el fronter */
+@media (max-width: 768px) {
+    .menu-footer > div {
+        width: 100%;
+    }
+
+    .copyright {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+/*=====================================================================*/
+
+/*------------------------------------------------------------------------*/
+/*diseno de boton de whatsapp*/
+.whatsapp-button {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      transition:  0.5s ease;
+    }
+/*------------------------------------------------------------------------*/
+/* Estilo para el ícono del menú */
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Ocultar el menú de selección para pantallas grandes */
+.mobile-menu {
+    display: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    
+}
+/*-------------------------------------------------------------------------------------------*/
+/*responsive para el menu para pantalla pequenas*/
+
+/* Mostrar el menú desplegable en pantallas pequeñas */
+        /* Estilos para pantallas pequeñas */
+    /* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Oculta la lista de navegación por defecto */
+    }
+
+    .menu-icon {
+        display: block; /* Muestra el ícono de menú */
+    }
+
+    .mobile-menu {
+        display: none; /* Oculta el menú desplegable por defecto */
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        z-index: 9;
+    }
+
+    .mobile-menu.show {
+        display: block; /* Muestra el menú cuando está activo */
+    }
+
+    .mobile-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mobile-menu ul li {
+        margin: 10px 0;
+    }
+
+    .mobile-menu ul li a {
+        color: #e6ca15; 
+        text-decoration: none;  /* Elimina el subrayado del enlace */
+        font-size: 18px; /*tamano de fuente de texto*/
+    }
+    
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 769px) {
+    .menu-icon {
+        display: none; /* Oculta el ícono de menú en pantallas grandes */
+    }
+
+    .mobile-menu {
+        display: block; /* Muestra el menú en pantallas grandes */
+        position: static; /* Restablece la posición para pantallas grandes */
+        background-color: transparent; /* Opcional: ajusta el color de fondo */
+        color: black; /* Opcional: ajusta el color del texto */
+        padding: 0; /* Opcional: ajusta el padding */
+        width: auto; /* Opcional: ajusta el ancho */
+        max-width: none; /* Opcional: elimina el max-width */
+        text-align: left; /* Opcional: ajusta la alineación del texto */
+        z-index: auto; /* Opcional: restablece el z-index */
+    }
+
+    nav ul {
+        display: flex; /* Muestra la lista de navegación en pantallas grandes */
+    }
+
+    nav ul li {
+        margin: 0 10px; /* Ajusta el margen entre los elementos de la lista */
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: black; /* Ajusta el color de los enlaces */
+    }
+}
+/*---------------tamano de las imagenes de equipo--------------------------------------*/
+.imagen-servicio {
+    width: 100px; /* Ajusta el tamaño según tus necesidades */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+
+/*--------------para la trasncision de la pagina baje fluido-----------------------------------------*/
+html {
+    scroll-behavior: smooth;
+}
+/*----------------------------------------------------------------------------*/
+
+</style> 
+
+<!------------------para el menu da la pantalla pequenas------------------------------>
+<script>
+   
+    </script>
+<script>
+         function toggleMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            menu.classList.toggle('show');
+        }
+
+
+    function closeMenu() {
+        const menu = document.querySelector('.mobile-menu');
+        menu.classList.remove('show');
+    }
+    
+      // Cierra el menú si se hace clic fuera del menú en pantallas pequeñas
+      document.addEventListener('click', (event) => {
+            const menu = document.querySelector('.mobile-menu');
+            const menuIcon = document.querySelector('.menu-icon');
+
+            // Verifica si el clic se realizó fuera del menú y del ícono del menú
+            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+                menu.classList.remove('show');
+            }
+        });
+</script>
+
+<!--=---------el que captura la accion de los botones de contenido de la pagina-------------------------------------->
+
+<script>
+
+function showSection(sectionId) {
+  // Seleccionar todas las secciones
+  const sections = document.querySelectorAll('.section');
+
+  // Quitar la clase 'active' de todas las secciones y ocultar las imágenes con opacidad
+  sections.forEach(section => {
+    section.classList.remove('active');
+    const images = section.querySelectorAll('.galeria .item img');
+    images.forEach(img => {
+      img.style.opacity = '0'; // Oculta las imágenes al cambiar de sección
+    });
+  });
+
+  // Seleccionar la sección activa
+  const activeSection = document.getElementById(sectionId);
+
+  // Agregar la clase 'active' a la sección activa
+  if (activeSection) {
+    activeSection.classList.add('active');
+
+    // Mostrar las imágenes con una transición de opacidad
+    const activeImages = activeSection.querySelectorAll('.galeria .item img');
+    activeImages.forEach(img => {
+      setTimeout(() => {
+        img.style.opacity = '1'; // Muestra las imágenes con una transición suave
+      }, 50); // Un pequeño retraso para asegurar la transición
+    });
+  }
+
+  // Seleccionar todos los filtros
+  const filters = document.querySelectorAll('.filtros a');
+
+  // Quitar la clase 'activo' de todos los filtros
+  filters.forEach(filter => filter.classList.remove('activo'));
+
+  // Seleccionar el filtro activo
+  const activeFilter = document.querySelector(`.filtros a[onclick="showSection('${sectionId}')"]`);
+
+  // Agregar la clase 'activo' al filtro activo
+  if (activeFilter) {
+    activeFilter.classList.add('activo');
+  }
+}
+</script>
+
+<!----------------------diseno de pagina este fluida------------------------------->
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetElement = document.querySelector(this.getAttribute('href'));
+
+        window.scrollTo({
+            top: targetElement.offsetTop,
+            behavior: 'smooth'
+        });
+    });
+});
+
+</script>      
+<!-------------------------------------------------------------------------------->
+
+</head>
+<body>
+    <header>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="logo">code</div>
+        <nav class="mobile-menu">
+    
+            <ul>
+                <li><a href="#inicio" onclick="closeMenu()">Inicio</a></li>
+                <li><a href="#about-we" onclick="closeMenu()">About We</a></li>
+                <li><a href="#portafolio" onclick="closeMenu()">Portafolio</a></li>
+                <li><a href="#equipo" onclick="closeMenu()">Equipo</a></li>
+                <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
+               
+            </ul>
+            
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Somos <span>Code</span></h1>
+            <p>Una galardonado grupo para la ayuda de lo que necesites crear o utilizar</p>
+            <a href="#server" class="btn" onclick="closeMenu()">Conócenos más</a>
+
+        </div>
+    </section>
+
+    <main>
+
+<!--diseno del fondo de opciones -->
+<!--informaciones sobre nosotros-->
+<section id="about-we">
+        <section id="sobre-nosotros">
+            <h2>Sobre nosotros</h2>
+            <div class="contenido">
+                <div class="columna">
+                    <h3>¿Quiénes somos?</h3>
+                    <p>Somos un grupo de programadores comenzando en la industria pero aptamente capacitados para la creaciones de tus necesidades </p>
+                </div>
+                <div class="columna">
+                    <h3>¿Qué hacemos?</h3>
+                    <p>Nos especializamos en el desarrollo de aplicaciones web y móviles, tambien en sistema de inventarios,facturacion,imprecion de factua y mas, solo en JAVA por el momento</p>
+                </div>
+                <div class="columna">
+                    <h3>¿Por qué elegirnos?</h3>
+                    <p>Dominamos una amplia gama de habilidades y tecnologías, incluyendo Java, HTML, CSS, SQL, a unos costos sumamente economicos</p>
+                </div>
+            </div>
+        </section>
+    </section>
+<!-------------------------------------------portafolio------------------------------------------------------------------>
+<script>
+   
+  </script>   
+
+<section id="portafolio">
+        <h2>Nuestro Portafolio</h2>
+        <div class="filtros">
+            
+            <ul>
+                <li><a class="activo" onclick="showSection('todo')">Todo</a></li>
+                <li><a onclick="showSection('html-y-css')">Html</a></li>
+                <li><a onclick="showSection('java')">JAVA</a></li>
+                <li><a onclick="showSection('MYSQL')">MYSQL</a></li>
+              </ul>
+    </div>
+
+    
+
+    <section id="todo" class="section active ">
+        <div class="galeria">
+            <div class="item"><img src="java.png" alt="Proyecto 1"></div>
+            <div class="item"><img src="java1.png" alt="Proyecto 2"></div>
+            <div class="item"><img src="java2.png" alt="Proyecto 3"></div>
+            <div class="item"><img src="factura.png" alt="Proyecto 4"></div>
+            <div class="item"><img src="tabla.png" alt="Proyecto 5"></div>
+            <div class="item"><img src="farmancia.png" alt="Proyecto 6"></div>
+            <div class="item"><img src="negro.png" alt="Proyecto 7"></div>
+            <div class="item"><img src="simpson.png" alt="Proyecto 8"></div>
+        </div>
+    </div>
+    </section>
+
+    <section id="html-y-css" class="section image-gallery">
+        <div class="galeria">
+            <div class="item"><img src="simpson.png" alt="Proyecto 1"></div>
+            <div class="item"><img src="menu.png" alt="Proyecto 2"></div>
+            <div class="item"><img src="Óptica - Personal_ Microsoft​ Edge 24_8_2024 00_46_12.png" alt="Proyecto 3"></div>
+            <div class="item"><img src="negro.png" alt="Proyecto 4"></div>
+            <div class="item"><img src="farmancia.png" alt="Proyecto 5"></div>
+            <div class="item"><img src="farms.png" alt="Proyecto 6"></div>
+            <div class="item"><img src="mesa.png" alt="Proyecto 7"></div>
+            <div class="item"><img src="digital.png" alt="Proyecto 8"></div>
+        </div>
+    </div>
+
+</section>
+
+<section id="java" class="section">
+<div class="galeria">
+    <div class="item"><img src="java.png" alt="Proyecto 1"></div>
+    <div class="item"><img src="java1.png" alt="Proyecto 2"></div>
+    <div class="item"><img src="java2.png" alt="Proyecto 3"></div>
+    <div class="item"><img src="factura.png" alt="Proyecto 4"></div>
+    <div class="item"><img src="tabla.png" alt="Proyecto 5"></div>
+    <div class="item"><img src="empleado.png" alt="Proyecto 6"></div>
+    <div class="item"><img src="inventario.png" alt="Proyecto 7"></div>
+    <div class="item"><img src="login.png" alt="Proyecto 8"></div>
+</div>
+</div>
+</section>
+
+<section id="MYSQL" class="section">
+<div class="galeria">
+    <div class="item"><img src="mysql.avif" alt="Proyecto 1"></div>
+    <div class="item"><img src="dato.png" alt="Proyecto 2"></div>
+    <div class="item"><img src="mys.png" alt="Proyecto 4"></div>
+</div>
+</div>
+
+</section>
+</section>
+    </section>
+<!--------------------------------------------------------------------------------------------------------------->
+<section id="server">
+        <section id="servicios">
+            <h2>Nuestros Servicios</h2>
+            <div class="servicios">
+                <div class="servicio">
+                    <i class="icono">🌐</i>
+                    <h3>Diseño web</h3>
+                    <p>ofrecemos, Estructura y Navegación base a enlaces para mejor comunicacion, Apariencia Visual, Diseño Responsivo, Interactividad y Experiencia de Usuario (UX)</p>
+                </div>
+                <div class="servicio">
+                    <i class="icono">💻</i>
+                    <h3>Desarrollo de aplicaciones</h3>
+                    <p>ofrecemos misma condicionesque en Diseño web, mas el implemento de registros php, enviar datos de cliente,</p>
+                </div>
+                <div class="servicio">
+                    <i class="icono">📊</i>
+                    <h3>JAVA</h3>
+                    <p>Te creamos, registro de cliente,empleados,inventarios, reorden, registro de articulos o mercancia, sistema de facturacion,descunto,metodo de pago y mucho mas!!!</p>
+                </div>
+                <div class="servicio">
+                    <i class="icono">📈</i>
+                    <h3>Base de dato</h3>
+                    <p>  te hacemos tu propia base de dato para almacenar, gestionar y recuperar datos de manera eficiente </p>
+                </div>
+        </section>
+</section>        
+<!---------------------nuestro equipo------------------------>
+<section id="equipo">
+        <section id="servicios">
+            <h2>Nuestro equipo</h2>
+            <div class="servicios">
+                <div class="servicio">
+                    <img src="inconito.jpg" alt="Diseño web" class="imagen-servicio">
+                    <h3>Juan adbiel</h3>
+                    <p>Lider del grupo, Destribuye y Reorganiza nuestro trabajos, Especializado En JAVA,base de dato y en logica de programacion.</p>
+                </div>
+                <div class="servicio">
+                    <img src="inconito.jpg" alt="Diseño web" class="imagen-servicio">
+                    <h3>Johel Frias</h3>
+                    <p>Nuestro couch y manegador de los proyectos pesados, manipulador de JAVA Buena interpretacion de logica para cualquier tipo de trabajo y otras heramientas mas.</p>
+                </div>
+                <div class="servicio">
+                    <img src="inconito.jpg" alt="Diseño web" class="imagen-servicio">
+                    <h3>carlos eduardo</h3>
+                    <p>Especializista en Desarrollador Front-End de nuestras paginas wed, y manipulador de registro php con conocimiento basicos de JAVA.</p>
+                </div>
+                <div class="servicio">
+                    <img src="inconito.jpg" alt="Diseño web" class="imagen-servicio">
+                    <h3>Ezquiel espinal</h3>
+                    <p>Especializado en nuestras informaciones y proyecto para que efectue de manera correcta, Especialista en analizar los proyecto y como se debe iniciar para terminar de la forma correcta con exelente logica tanto como programacion como recolector de datos.</p>
+                </div>
+                <div class="servicio">
+                    <img src="inconito.jpg" alt="Diseño web" class="imagen-servicio">
+                    <h3>Vizandry mata</h3>
+                    <p>Especialista en Excel y digitador, reorganizador de datos utilizando Excel, cuenta tambien con conocimiento de java. </p>
+                </div>
+                <div class="servicio">
+                    <img src="inconito.jpg" alt="Diseño web" class="imagen-servicio">
+                    <h3>Jonathan</h3>
+                    <p>Especializado en nuestras redes, servidores, router y Switches de Red con conocimetos basicos en progrmacion.</p>
+                </div>
+
+            </section>  
+        </section>            
+<!--------------------------------------------------------------------------------------------------------------------------------------------------->
+    </main>
+
+    <footer class="footer">
+        <section id="contacto">
+        <div class="container container-footer">
+            <div class="menu-footer">
+                <div class="contact-info">
+                    <p class="title-footer">Información de Contacto</p>
+                    <ul>
+                        <li>
+                            Dirección: Republica Dominicana, gurabo santiago calle #20 
+                        </li>
+                        <li>instagram: por el momento no tenemos</li>
+                        <li>Fax: por el momento no tenemos</li>
+                        <li>EmaiL: cruzc0490@gmail.com</li>
+                    </ul>
+                    <!-- <div class="social-icons">
+                        <span class="facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </span>
+                        <span class="twitter">
+                            <i class="fa-brands fa-twitter"></i>
+                        </span>
+                        <span class="youtube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </span>
+                        <span class="pinterest">
+                            <i class="fa-brands fa-pinterest-p"></i>
+                        </span>
+                        <span class="instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </span>
+                    </div> -->
+                </div>
+
+                <div class="information">
+                    <p class="title-footer">Informaciónes</p>
+                    <ul>
+                        <li><a href="#">No hacemos rembolsos</a></li>
+                        <li><a href="#">Siempre les daremos seguimiento en buscar mejores soluciones</a></li>
+                        <li><a href="#">Buscamos que este siempre sastifecho</a></li>
+                        <li><a href="#">No se le cobrara por errores ocurido por el ingeriero</a></li>
+                        <li><a href="#">Se buscara soluciones ante problemas</a></li>
+                    </ul>
+                </div>
+
+                <div class="my-account">
+                    <p class="title-footer">Habilidades</p>
+
+                    <ul>
+                        <li><a >Comunucacion 100%</a></li>
+                        <li><a >Trabajo en equipo 90%</a></li>
+                        <li><a >Dedicacion 90%</a></li>
+                        <li><a >Gestion de proyecto 85%</a></li>
+                        <li><a >Creatividad 87%</a></li>
+                    </ul>
+                </div>
+
+                <div class="newsletter">
+                <p class="title-footer">Escribenos para la creacion de tu nuevo proyecto</p>
+
+                    <div class="">
+                        <a href="https://wa.me/8293613888" target="_blank" class="whatsapp-button">
+                            Contáctanos por WhatsApp </a>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>
+                    Desarrollado por code nuestro grupo de ingerieros &copy; 2024
+                </p>
+<!--  <img src="img/payment.png" alt="Pagos"> -->
+            </div>
+        </div>
+       
+    </footer>
+
+</body>
+</html>
